@@ -3,4 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!--  Nuevos colores  -->
+    <color name="pplay_azul">#010456</color>
+    <color name="pplay_amarillo">#F5AA1E</color>
+    <color name="pplay_naranja">#EF4837</color>
 </resources>
