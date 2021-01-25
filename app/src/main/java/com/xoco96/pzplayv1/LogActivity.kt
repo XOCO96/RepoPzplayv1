@@ -31,9 +31,23 @@ class LogActivity : AppCompatActivity() {
     private fun setup(){
         title = "Autenticación"
 
+        // Acción del boton -REGISTRAR-
         siginButton.setOnClickListener {
             if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty() ){
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString()).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
+                    } else {
+                        showalert()
+                    }
+                }
+            }
+        }
+
+        //Acción del boton -ACCEDER-
+        loginButton.setOnClickListener {
+            if (emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty() ){
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(emailEditText.text.toString(), passwordEditText.text.toString()).addOnCompleteListener {
                     if (it.isSuccessful) {
                         showHome(it.result?.user?.email ?: "", ProviderType.BASIC)
                     } else {
