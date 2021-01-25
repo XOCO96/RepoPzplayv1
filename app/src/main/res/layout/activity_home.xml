@@ -29,7 +29,8 @@
             android:ems="10"
             android:hint="@string/TxVw_email"
             android:inputType="textEmailAddress"
-            android:textColor="@color/pplay_azul" />
+            android:textColor="@color/pplay_azul"
+            android:textSize="18sp" />
 
         <Space
             android:layout_width="match_parent"
@@ -42,7 +43,8 @@
             android:ems="10"
             android:hint="@string/TxVw_provider"
             android:inputType="textPassword"
-            android:textColor="@color/pplay_azul" />
+            android:textColor="@color/pplay_azul"
+            android:textSize="18sp" />
 
         <Space
             android:layout_width="match_parent"
