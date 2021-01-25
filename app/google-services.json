@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "670458904602",
+    "project_id": "tutorialmouredev-firebase",
+    "storage_bucket": "tutorialmouredev-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670458904602:android:5dc210eb35d06f989951a3",
+        "android_client_info": {
+          "package_name": "com.xoco96.pzplayv1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670458904602-l2kommkoce2hb1rubrtqv1oatqurdl36.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuckbFJ3RW-Mrl2d7jUjDCt751vMFhP3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670458904602-l2kommkoce2hb1rubrtqv1oatqurdl36.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
