@@ -3,6 +3,10 @@ package com.xoco96.pzplayv1
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
+enum class ProviderType{
+    BASIC
+}
+
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
