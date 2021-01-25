@@ -7,4 +7,6 @@
     <string name="TxVw_password">Contraseña</string>
     <string name="btn_logout">Cerrar Sesión</string>
     <string name="TxVw_provider">Proveedor</string>
+    
+    <string name="prefs_file">com.xoco96.pzplayv1.PREFERENCE_FILE_KEY</string>
 </resources>
