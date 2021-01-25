@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Pzplayv1</string>
+
+    <string name="btn_registrarse">REGISTRAR</string>
+    <string name="btn_acceder">ACCEDER</string>
+    <string name="TxVw_email">Correo</string>
+    <string name="TxVw_password">Contraseña</string>
 </resources>

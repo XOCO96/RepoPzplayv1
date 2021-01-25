@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/TxVw_email"
             android:inputType="textEmailAddress" />
 
         <Space
@@ -37,6 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/TxVw_password"
             android:inputType="textPassword" />
 
         <Space
@@ -50,22 +52,25 @@
 
             <Button
                 android:id="@+id/siginButton"
+                style="@android:style/ButtonBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:text="Button" />
-
-            <Space
-                android:layout_width="8dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:background="@color/pplay_azul"
+                android:text="@string/btn_registrarse"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/loginButton"
+                style="@android:style/ButtonBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:background="@color/pplay_azul"
+                android:text="@string/btn_acceder"
+                android:textColor="@android:color/white" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
