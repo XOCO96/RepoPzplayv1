@@ -1,6 +1,8 @@
 package com.xoco96.pzplayv1
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
@@ -24,6 +26,19 @@ class LogActivity : AppCompatActivity() {
 
         //  Configuración
         setup()
+        // comprobar el estado de la sesion
+        sesion()
+    }
+
+    // ir al segundo activity si la sension no fue cerrada anteriormente por el usuario
+    private fun sesion(){
+        val prefs: SharedPreferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
+        val email = prefs.getString("email",null)
+        val provider =prefs.getString("provider",null)
+
+        if (email != null && provider != null){
+            showHome(email, ProviderType.valueOf(provider))
+        }
     }
 
     // Funcion que valida que los campos de correo y contraseña no esten vacios para crear un
