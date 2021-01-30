@@ -6,11 +6,19 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_log.*
 
 class LogActivity : AppCompatActivity() {
+
+    // id enviado como respuesta por el login por autenticacion de google
+    private val GOOGLE_SIGN_IN = 100
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         setTheme(R.style.AppTheme)
@@ -72,6 +80,22 @@ class LogActivity : AppCompatActivity() {
             }
         }
 
+        // Acción del boton de acceso por Google
+        googlebutton.setOnClickListener {
+            //configuracion de login por defecto con google
+            val googleconfig = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()     //se solicita el email del usuario
+                .build()
+
+            // creacion del cliente de autenticacion
+            val googleclient = GoogleSignIn.getClient(this, googleconfig)
+            googleclient.signOut()      // cierre de sesion para cualquier cuenta google que pueda antes estar logeada en el boton Google
+            // Muestra la pantalla de autenticacion de Google
+            startActivityForResult(googleclient.signInIntent, GOOGLE_SIGN_IN)
+
+        }
+
     }
 
     // Funcion que muestra una ventana al producirse un error al intentar autenticar
@@ -92,6 +116,33 @@ class LogActivity : AppCompatActivity() {
             putExtra("provider", provider.name)
         }
         startActivity(homeIntent)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == GOOGLE_SIGN_IN) {         // la respuesta del activity corresponde con la de la autenticacion con google
+            val task =
+                GoogleSignIn.getSignedInAccountFromIntent(data)          //recuperacion de la respuesta del activity
+
+            try {
+                val account = task.getResult(ApiException::class.java)    // recuperacion de la cuenta autenticada
+                if (account != null) {
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null )    // obtención de la credencial de la cuenta
+                FirebaseAuth.getInstance()
+                    .signInWithCredential(credential)           // Autenticacion en Firebase. La credencial obtenida de -account-
+                    .addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            showHome(account.email ?: "", ProviderType.GOOGLE)
+                        } else {
+                            showalert()
+                        }
+                    }
+                }
+            } catch (e: ApiException){
+                showalert()
+            }
+        }
     }
 
 }
